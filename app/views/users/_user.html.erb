@@ -3,3 +3,26 @@
 <br>
 <b>Email</b>
 <%= user.email %>
+
+<br>
+<b><%= 'sign_in_count'.humanize %></b>
+<%= user.sign_in_count %>
+<br>
+<b><%= 'current_sign_in_at'.humanize %></b>
+<%= user.current_sign_in_at %>
+<br>
+<b><%= 'last_sign_in_at'.humanize %></b>
+<%= user.last_sign_in_at %>
+<br>
+<b><%= 'current_sign_in_ip'.humanize %></b>
+<%= user.current_sign_in_ip %>
+<br>
+<b><%= 'last_sign_in_ip'.humanize %></b>
+<%= user.last_sign_in_ip %>
+<br>
+<b><%= 'roles'.humanize %></b>
+<%= user.active_roles.join(", ") %>
+<br>
+<%= link_to "Edit roles", edit_user_path(user)  %>
+<br>
+<%= link_to "Delete", user, method: :delete, data: {confirm: "Are you sure"} %>
