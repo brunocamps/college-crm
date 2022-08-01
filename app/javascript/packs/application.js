@@ -17,3 +17,5 @@ import 'bootstrap/dist/css/bootstrap'
 require("stylesheets/application.scss")
 
 import "@fontawesome/fontawesome-free/css/all"
+import "../stylesheets/application"
+global.toastr = require("toastr")
