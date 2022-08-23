@@ -26,7 +26,7 @@
         <%= @user.active_roles.join(", ") %>
         <br>
         <% if current_user.admin? %>
-        <%= link_to "Edit roles", edit_user_path(@user)  %>
+        <%= link_to "Edit", edit_user_path(@user)  %>
         <br>
         <%= link_to "Delete", @user, method: :delete, data: {confirm: "Are you sure"} %>
 

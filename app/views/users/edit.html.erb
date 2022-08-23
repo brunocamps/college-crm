@@ -24,6 +24,10 @@
       </div>
     <% end %>
 
+    <%= f.label :email%>
+    <%= f.text_field :email %>
+    <br>
+
     <% User::ROLES.each do |role| %>
       <label>
         <%= f.check_box role %>
@@ -31,6 +35,7 @@
       </label>
       <br>
     <% end %>
+    <br>
 
     <%= f.button :submit %>
 
