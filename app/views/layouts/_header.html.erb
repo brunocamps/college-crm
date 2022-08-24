@@ -18,6 +18,10 @@
           <div class="fa fa-users"></div>
           Users
           <% end %>
+          <%= link_to classrooms_path, class: "nav-link #{'active fw-bold' if current_page?(classrooms_path)}" do%>
+          <div class="fa fa-door-open"></div>
+          Classrooms
+          <% end %>
         <% end %>
           
       </ul>
