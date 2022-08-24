@@ -33,8 +33,9 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        list_allowed_params = [:email]
-        list_allowed_params += [*User::ROLES, :email] if current_user.admin?
+        list_allowed_params = []
+        list_allowed_params += [:email] if current_user == @user || current_user.admin?
+        list_allowed_params += [*User::ROLES] if current_user.admin?
         params.require(:user).permit(list_allowed_params)
         # params.require(:user).permit(*User::ROLES, :email) 
     end
@@ -42,6 +43,13 @@ class UsersController < ApplicationController
     def require_admin
         unless current_user.admin?
             redirect_to root_path, alert: "You are not authorized to perform this action."
+        end
+    end
+
+    def require_admin_or_owner
+        @user = User.find(params[:id])
+        unless current_user.admin? || current_user = @user
+            redirect_to (request.referrer || root_path), alert: "You are not authorized to perform this action"
         end
     end
 
