@@ -7,7 +7,7 @@
     <%= f.association :user %>
     <%= f.association :classroom %>
     <%= f.association :service %>
-    <%= f.input :start_time %>
+    <%= f.input :start_time, :minute_step => 15 %>
     <%= f.input :days %>
 
   </div>
