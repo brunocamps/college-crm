@@ -10,12 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_24_234311) do
+ActiveRecord::Schema.define(version: 2022_08_27_010005) do
 
   create_table "classrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "classroom_id", null: false
+    t.integer "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.time "start_time"
+    t.json "days", default: {}, null: false
+    t.index ["classroom_id"], name: "index_courses_on_classroom_id"
+    t.index ["service_id"], name: "index_courses_on_service_id"
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -29,4 +42,7 @@ ActiveRecord::Schema.define(version: 2022_08_24_234311) do
 # Could not dump table "users" because of following StandardError
 #   Unknown type 'inet' for column 'current_sign_in_ip'
 
+  add_foreign_key "courses", "classrooms"
+  add_foreign_key "courses", "services"
+  add_foreign_key "courses", "users"
 end
