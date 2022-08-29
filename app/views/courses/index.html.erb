@@ -19,7 +19,10 @@
         
         <th>Service</th>
         
-        <th>Actions</th>
+
+        <th>Start time</th>
+
+        <th>Days</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +35,10 @@
             <td><%= course.classroom %></td>
           
             <td><%= course.service %></td>
+
+            <td><%= course.start_time %></td>
+
+            <td><%= course.active_days.join(", ") %></td>
           
           <td>
             <%= link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning' %>

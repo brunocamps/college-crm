@@ -8,9 +8,19 @@
     <%= f.association :classroom %>
     <%= f.association :service %>
     <%= f.input :start_time, :minute_step => 15 %>
-    <%= f.input :days %>
+    <br>
+
+    <% Course::DAYS_OF_WEEK.each do |day| %>
+      <label>
+        <%= f.check_box day %>
+        <%= day.to_s.humanize %>
+      </label>
+      <br>
+    <% end %>
 
   </div>
+  <br>
+  <br>
 
   <div class="form-actions">
     <%= f.button :submit %>
