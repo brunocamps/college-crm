@@ -30,6 +30,10 @@
             <div class="fa fa-door-open"></div>
             Courses
             <% end %>
+            <%= link_to lessons_path, class: "nav-link #{'active fw-bold' if current_page?(lessons_path)}" do%>
+            <div class="fa fa-door-open"></div>
+            Lessons
+            <% end %>
         <% end %>
           
       </ul>
