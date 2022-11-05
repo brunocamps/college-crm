@@ -27,6 +27,7 @@
         <th>Schedule</th>
 
         <th>Occurrences</th>
+
       </tr>
     </thead>
     <tbody>
@@ -50,6 +51,7 @@
               <%= occurrence&.strftime("%d/%b/%y") %>
               <br>
             <% end %>
+            <%= button_to "Generate lessons", generate_lessons_course_path(course), method: :patch %>
             
             </td>
           

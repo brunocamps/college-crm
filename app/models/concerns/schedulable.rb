@@ -11,6 +11,10 @@ module Schedulable
   
       # Cast days to/from booleans
       DAYS_OF_WEEK.each do |day|
+        # scope day, -> { where('days @> ?', { day => true }.to_json) }
+        # define_method(:"#{day}=") { |value| super ActiveRecord::Type::Boolean.new.cast(value) }
+        # define_method(:"#{day}=") { |value| super ActiveRecord::Type::Boolean.new.cast(value) }
+        # define_method(:"#{day}?") { send(day) }
         scope day, -> { where('days @> ?', { day => true }.to_json) }
         define_method(:"#{day}=") { |value| super ActiveRecord::Type::Boolean.new.cast(value) }
         define_method(:"#{day}?") { send(day) }
