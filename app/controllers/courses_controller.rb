@@ -7,8 +7,12 @@ class CoursesController < ApplicationController
   end
 
   def generate_lessons 
+    # delete future lessons to regenerate them
+    @course.lessons.where("start > ?", Time.now).destroy_all
 
-    @course.schedule.occurrences(Time.now + 1.month).each do |occurrence|
+    # regenerates future lessons
+    
+    @course.schedule.next_occurrences(8).each do |occurrence|
       @course.lessons.find_or_create_by(start: occurrence.to_datetime, user: @course.user, classroom: @course.classroom)
     end 
     redirect_to @course, notice: "generate_lessons - ok"
@@ -17,6 +21,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+    @lessons = @course.lessons
   end
 
   # GET /courses/new

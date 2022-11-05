@@ -4,4 +4,9 @@ class StaticPagesController < ApplicationController
   
   def privacy_policy
   end
+
+  def calendar
+    @lessons = Lesson.all
+  end
+
 end
