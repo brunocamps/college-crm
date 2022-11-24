@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :movies
   resources :lessons
   resources :courses do
     resources :lessons, except: [:index, :show], controller: "courses/lessons"

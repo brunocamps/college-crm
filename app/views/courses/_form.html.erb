@@ -18,6 +18,16 @@
       <br>
     <% end %>
 
+    <h3>Enrollments</h3>
+    <div id="enrollments">
+      <%= f.simple_fields_for :enrollments do |enrollment| %>
+        <%= render 'enrollment_fields', f: enrollment %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'add enrollment', f, :enrollments %>
+      </div>
+    </div>
+
   </div>
   <br>
   <br>
@@ -26,3 +36,5 @@
     <%= f.button :submit %>
   </div>
 <% end %>
+
+

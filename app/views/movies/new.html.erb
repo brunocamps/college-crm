@@ -1,0 +1,14 @@
+<div class="card shadow">
+  <div class="card-header">
+    <h4>
+      New
+      Movie
+    </h4>
+  </div>
+  <div class="card-body">
+    <%= render 'form', movie: @movie %>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Cancel', movies_path %>
+  </div>
+</div>
